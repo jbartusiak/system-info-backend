@@ -4,7 +4,7 @@ import { env } from '../config/env';
 import { Container } from "../classes/docker/Container";
 import { Image } from "../classes/docker/Image";
 
-const baseUrl = env.dockerServiceAddress;
+const baseUrl = env.DOCKER_SERVICE_ADDRESS;
 
 const router = Router();
 
