@@ -2,6 +2,7 @@ FROM alpine:latest AS builder
 RUN apk add --update nodejs npm
 WORKDIR /app
 COPY package.json ./
+COPY .env ./
 COPY . .
 RUN npm install
 RUN npm run build
@@ -12,7 +13,8 @@ WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/package.json .
+COPY --from=builder /app/.env .
 
-CMD ["node", "build/index.js"]
+CMD ["node", "build/app.js"]
 
 EXPOSE 3001

@@ -8,14 +8,14 @@ const baseUrl = env.DOCKER_SERVICE_ADDRESS;
 
 const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
+router.get('/containers', (req: Request, res: Response) => {
     axios.get<any, AxiosResponse<Container[]>>(`${ baseUrl }/containers/json`)
         .then((response) => res.send(response.data));
 });
 
 router.get('/images', (req: Request, res: Response) => {
     axios.get<any, AxiosResponse<Image[]>>(`${ baseUrl }/images/json`)
-        .then(response => res.send(response.data));
+        .then((response) => res.send(response.data));
 })
 
 export { router as dockerRouter };

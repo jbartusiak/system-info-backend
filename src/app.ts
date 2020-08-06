@@ -30,7 +30,7 @@ const server = app.listen(env.APPLICATION_PORT, () => {
     console.log(`App started and listening on port: ${ env.APPLICATION_PORT }`);
 });
 
-[ 'SIGINT', 'SIGTERM', 'SIGQUIT', 'SIGKILL' ].forEach(signal => {
+[ 'SIGINT', 'SIGTERM', 'SIGQUIT' ].forEach(signal => {
     process.on(signal, () => {
         console.log('Shutting down server');
         server.close((err) => {
